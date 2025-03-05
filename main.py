@@ -1,8 +1,14 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 import httpx
 import uvicorn
 
 app = FastAPI()
+
+
+@app.get("/")
+async def redirect_to_swagger():    
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/directions")
